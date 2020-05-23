@@ -1,0 +1,27 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" [routerLink]="['/']">App</a>
+        <div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/mensagens']">Mensagens</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/autenticacao']">Autenticação</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<!--
+<header>
+    <nav class="col-md-8 col-md-offset-2">
+        <ul class="nav nav-pills">
+            <li routerLinkActive="active"><a [routerLink]="['/mensagens']">Mensagens</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/autenticacao']">Autenticação</a></li>
+        </ul>
+    </nav>
+</header>
+-->
