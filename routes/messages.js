@@ -37,4 +37,19 @@ router.get('/', function (req, res, next) {
         });
 });
 
+router.delete('/:messageId', function (req, res, next) {
+    Message.findByIdAndDelete(req.params.messageId, function(err, result) {
+        if (err) {
+            return res.status(500).json({
+                errorTitle: 'Ocorreu um erro ao tentar deletar a mensagem',
+                error: err
+            });
+        }
+        res.status(201).json({
+            msgSucess: 'Mensagem deletada com sucesso',
+            deletedMessage: result
+        });
+    });
+});
+
 module.exports = router;

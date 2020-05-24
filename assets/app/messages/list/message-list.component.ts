@@ -28,5 +28,5 @@ export class MessageListComponent implements OnInit {
                 },
                 dadosErro => console.log(dadosErro)
         );
-    }    
+    }
 }

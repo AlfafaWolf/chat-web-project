@@ -24,7 +24,12 @@ export class MessageComponent {
     }
 
     onDelete() {
-        this.messageServiceObj.deleteMessage(this.messageVarClasse);
+        //this.messageServiceObj.deleteMessage(this.messageVarClasse);
+        this.messageServiceObj.deleteMessage(this.messageVarClasse)
+            .subscribe(
+                dadosSucesso => console.log(dadosSucesso),
+                dadosErro => console.log(dadosErro)
+            );
     }
 }
 
