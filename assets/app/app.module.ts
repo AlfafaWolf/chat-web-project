@@ -15,6 +15,7 @@ import { myrouting } from './app.routing';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { LogoutComponent } from './auth/logout/logout.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
         SignupComponent,
         SigninComponent,
         LogoutComponent,
+        ProfileComponent,
         TextSizeComponent,
     ],
     imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule],
