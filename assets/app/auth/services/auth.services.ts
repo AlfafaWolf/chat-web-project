@@ -14,9 +14,11 @@ export class AuthService {
 
         const bodyReq = JSON.stringify(user);
         const myHeaders = new Headers({'Content-Type': 'application/json'});
-        return this.http.post('http://localhost:3000/message', bodyReq, {headers: myHeaders})
+        return this.http.post('http://localhost:3000/user', bodyReq, {headers: myHeaders})
             .map((responseRecebida: Response) => {
-                
+                const responseEmJSON = responseRecebida.json();
+                const msg = responseEmJSON.objMessageSave;
+                console.log(msg);    
             })
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
