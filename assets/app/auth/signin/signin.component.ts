@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class SigninComponent implements OnInit {
     myForm: FormGroup;
 
-    onSubmit() {
+    onSubmit() {    
         console.log(this.myForm); console.log(this.myForm.value); 
         this.myForm.reset();
     }
