@@ -5,12 +5,13 @@ const User = require('../models/User');
 
 router.post('/', function (req, res, next){
     console.log("did it get to the post?");
+    const { firstName, lastName, password, gender, email } = req.body;
     const user = new User({
-        firstName:req.body.firstName,
-        lastName:req.body.lastName,
-        password:req.body.password,
-        gender:req.body.gender,
-        email:req.body.email
+        firstName,
+        lastName,
+        password,
+        gender,
+        email
     });
     console.log(user);
     user.save(function(err, result) {

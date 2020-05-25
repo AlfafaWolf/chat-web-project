@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit {
     myForm: FormGroup;
 
     onSubmit() {
-        const user = new User(this.myForm.value.emailTS, this.myForm.value.passwordTS, this.myForm.value.firstNameTS, this.myForm.value.lastNameTS, this.myForm.value.genderTS);
+        const { emailTS, passwordTS, genderTS, firstNameTS, lastNameTS } = this.myForm.value;
+        const user = new User(emailTS, passwordTS, genderTS, firstNameTS, lastNameTS);
         console.log(user);
         this.authService.addUser(user)
         .subscribe(
