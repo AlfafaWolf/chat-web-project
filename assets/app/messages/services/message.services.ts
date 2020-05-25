@@ -43,7 +43,7 @@ export class MessageService {
     }
 
     deleteMessage(message: Message) {
-        this.messageSService.splice(this.messageSService.indexOf(message), 1);
+        //this.messageSService.splice(this.messageSService.indexOf(message), 1);
         console.log(this.messageSService);
 
         return this.http.delete(`http://localhost:3000/message/${message.messageId}`)
@@ -51,6 +51,24 @@ export class MessageService {
                 for (const msg of this.messageSService) {
                     if (msg.messageId === message.messageId) {
                         this.messageSService.splice(this.messageSService.indexOf(msg), 1);
+                        break;
+                    }
+                }
+                return responseRecebida.json();
+            })
+            .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
+    }
+
+    editMessage(message: Message) {
+        const body = { content: message.content }
+        return this.http.put(`http://localhost:3000/message/${message.messageId}`, body)
+            .map((responseRecebida: Response) => {
+                const responseEmJSON = responseRecebida.json();
+                const msgAlterada = responseEmJSON.changedMessage;
+
+                for (const msg of this.messageSService) {
+                    if (msg.messageId === message.messageId) {
+                        this.messageSService[this.messageSService.indexOf(msg)] = new Message(msgAlterada.content, 'Anônimo', msgAlterada._id, null);
                         break;
                     }
                 }

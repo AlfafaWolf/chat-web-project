@@ -1,12 +1,24 @@
 <div class="card my-3">
     <div class="card-body">
-        {{ messageVarClasse.content }}
+        <span *ngIf="!estaEditando">{{ messageVarClasse.content }}</span>
+        <div [hidden]="!estaEditando">
+            <input type="text" 
+                class="form-control" 
+                value="{{ messageVarClasse.content }}" 
+                required 
+                #editBox>
+        </div>
     </div>
+
     <div class="card-footer">
         {{ messageVarClasse.username }}
-        <div class="config">
+        <div class="config" *ngIf="!estaEditando">
             <a (click)="onEdit()">Edit</a> |
             <a (click)="onDelete()">Delete</a>
+        </div>
+        <div *ngIf="estaEditando">
+            <button type="button" class="btn btn-primary btn-sm" (click)="submitEdit(editBox.value)">Submit</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)="cancelEdit()">Cancel</button>
         </div>
     </div>
 </div>

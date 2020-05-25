@@ -45,9 +45,25 @@ router.delete('/:messageId', function (req, res, next) {
                 error: err
             });
         }
-        res.status(201).json({
+        res.status(200).json({
             msgSucess: 'Mensagem deletada com sucesso',
             deletedMessage: result
+        });
+    });
+});
+
+router.put('/:messageId', function (req, res, next) {
+    const { content } = req.body;
+    Message.findByIdAndUpdate(req.params.messageId, { content }, { new: true }, function(err, result) {
+        if (err) {
+            return res.status(500).json({
+                errorTitle: 'Ocorreu um erro ao tentar atualizar a mensagem',
+                error: err
+            });
+        }
+        res.status(200).json({
+            msgSucess: 'Mensagem alterada com sucesso',
+            changedMessage: result
         });
     });
 });

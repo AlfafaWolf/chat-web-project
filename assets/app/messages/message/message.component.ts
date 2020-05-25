@@ -10,6 +10,8 @@ import { MessageService } from '../services/message.services';
 
 export class MessageComponent {
 
+    estaEditando: boolean = false;
+
     constructor(private messageServiceObj: MessageService) { }
 
     @Input() messageVarClasse : Message = new Message("","");
@@ -19,8 +21,23 @@ export class MessageComponent {
     //@Output('outputMessage') editClicked_MessageMetodoClasseAlias = new EventEmitter<string>();
 
     onEdit() {
-        this.editClicked_MessageMetodoClasse.emit("Texto veio de mensagem (child) para app (pai)");
+        //this.editClicked_MessageMetodoClasse.emit("Texto veio de mensagem (child) para app (pai)");
         //this.editClicked_MessageMetodoClasseAlias.emit("Texto veio de mensagem (child) para app (pai) - Alias");
+        this.estaEditando = true;
+    }
+
+    submitEdit(value: string) {
+        const msg = new Message(value, this.messageVarClasse.username, this.messageVarClasse.messageId, this.messageVarClasse.userId);
+        this.messageServiceObj.editMessage(msg)
+            .subscribe(
+                dadosSucesso => console.log(dadosSucesso),
+                dadosErro => console.log(dadosErro)
+            );;
+        this.cancelEdit();
+    }
+
+    cancelEdit() {
+        this.estaEditando = false;
     }
 
     onDelete() {
