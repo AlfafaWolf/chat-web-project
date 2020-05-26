@@ -18,8 +18,8 @@ export class MessageService {
             .map((responseRecebida: Response) => {
                 const responseEmJSON = responseRecebida.json();
                 const msg = responseEmJSON.objMessageSave;
-                this.messageSService.push(new Message(msg.content, 'Anônimo', msg._id, null ));
-                console.log(this.messageSService);
+                this.messageSService.push(new Message(msg.content, message.username, msg._id, message.userId));
+                console.log(this.messageSService + "this is it");
             })
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
@@ -33,7 +33,7 @@ export class MessageService {
                 let transfomedCastMessagesModelFrontend: Message[] = [];
                 for (const msg of messageSResponseRecebida) {
                     transfomedCastMessagesModelFrontend.push(
-                        new Message(msg.content, 'Anônimo', msg._id, null));
+                        new Message(msg.content, msg.username, msg._id, msg.userId));
                 }
                 this.messageSService = transfomedCastMessagesModelFrontend;
                 console.log(this.messageSService);
@@ -68,7 +68,7 @@ export class MessageService {
 
                 for (const msg of this.messageSService) {
                     if (msg.messageId === message.messageId) {
-                        this.messageSService[this.messageSService.indexOf(msg)] = new Message(msgAlterada.content, 'Anônimo', msgAlterada._id, null);
+                        this.messageSService[this.messageSService.indexOf(msg)] = new Message(msgAlterada.content, msgAlterada.username, msgAlterada._id, msgAlterada.userId);
                         break;
                     }
                 }
