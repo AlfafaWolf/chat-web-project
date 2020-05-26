@@ -30,8 +30,12 @@ export class MessageComponent {
         const msg = new Message(value, this.messageVarClasse.username, this.messageVarClasse.messageId, this.messageVarClasse.userId);
         this.messageServiceObj.editMessage(msg)
             .subscribe(
-                dadosSucesso => console.log(dadosSucesso),
-                dadosErro => console.log(dadosErro)
+                dadosSucesso => {
+                    return console.log(dadosSucesso);
+                },
+                dadosErro => {
+                    return console.log(dadosErro);
+                }
             );;
         this.cancelEdit();
     }

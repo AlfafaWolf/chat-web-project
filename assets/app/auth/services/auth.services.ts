@@ -15,6 +15,14 @@ export class AuthService {
         return this.user!= null;
     }
 
+    getName(){
+        return this.user.firstName + " " + this.user.lastName;
+    }
+
+    getID(){
+        return this.user.userID;
+    }
+
     addUser(user: User) {
         const bodyReq = JSON.stringify(user);
         const myHeaders = new Headers({'Content-Type': 'application/json'});

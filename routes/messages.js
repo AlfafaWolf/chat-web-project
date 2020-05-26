@@ -5,7 +5,9 @@ const Message = require('../models/Message');
 
 router.post('/', function (req, res, next) {
     const message = new Message({
-        content: req.body.content
+        content: req.body.content,
+        username: req.body.username,
+        userID: req.body.userID
     });
     message.save(function(err, result) {
         if (err) {

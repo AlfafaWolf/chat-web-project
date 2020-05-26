@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MessageService } from '../services/message.services';
 import { Message } from '../../models/message.model';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../../auth/services/auth.services';
 
 @Component({
     selector: 'app-message-input',
@@ -10,10 +11,10 @@ import { NgForm } from '@angular/forms';
 })
 
 export class MessageInputComponent {
-    constructor(private messageService: MessageService) { }
+    constructor(private messageService: MessageService, private authService: AuthService) { }
 
     onSubmit(form: NgForm) {
-        const messageAux = new Message(form.value.myContentngForm, 'Anônimo');
+        const messageAux = new Message(form.value.myContentngForm, this.authService.getName(), this.authService.getID());
         this.messageService.addMessage(messageAux)
             .subscribe(
                 dadosSucesso => console.log(dadosSucesso),
