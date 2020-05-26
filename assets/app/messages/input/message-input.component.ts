@@ -15,6 +15,7 @@ export class MessageInputComponent {
 
     onSubmit(form: NgForm) {
         const messageAux = new Message(form.value.myContentngForm, this.authService.getName(), this.authService.getID());
+        console.log(this.authService.getID());
         this.messageService.addMessage(messageAux)
             .subscribe(
                 dadosSucesso => console.log(dadosSucesso),

@@ -2,20 +2,23 @@ const express = require('express');
 const router = express.Router();
 
 const Message = require('../models/Message');
+const User = require('../models/User');
 
 router.post('/', function (req, res, next) {
+    console.log(req.body.userId);
     const message = new Message({
         content: req.body.content,
         username: req.body.username,
-        userID: req.body.userID
+        userID: req.body.userId
     });
+    console.log(message.userID);
     message.save(function(err, result) {
         if (err) {
             return res.status(500).json({
                 errorTitle: 'Um erro aconteceu na hora de salvar.',
                 error: err
             });
-        }
+        }  
         res.status(201).json({
             msgSucess: 'Mensagem salva com sucesso',
             objMessageSave: result
