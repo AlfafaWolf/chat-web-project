@@ -28,4 +28,21 @@ router.post('/', function (req, res, next){
     });
 });
 
+router.get('/', function (req, res, next) {
+    var query = User.where({email:req.headers.email});
+    //console.log(req.body);
+    query.findOne(function(err, user){
+        if (err) {
+            return res.status(500).json({
+                erroTitle: 'Um erro aconteceu na hora de buscar os dados',
+                error: err
+            });
+        }
+        res.status(200).json({
+            msgSucess: 'User recuperado com sucesso',
+            objUserRecuperado: user
+        });
+    });
+});
+
 module.exports = router;
