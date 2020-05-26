@@ -59,6 +59,10 @@ export class AuthService {
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
 
+    getSession() {
+        return this.user;
+    }
+
     logOff(){
         this.user = null;
     }

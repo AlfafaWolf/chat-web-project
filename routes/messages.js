@@ -24,6 +24,15 @@ router.post('/', function (req, res, next) {
             objMessageSave: result
         });
     });
+    console.log(message);
+    User.updateOne({_id: message.userID }, { $push: { messages: message._id}}, (err, doc) => {
+        if (err) {
+            return res.status(500).json({
+                errorTitle: 'Um erro aconteceu na hora de salvar a mensagem no usuario.',
+                error: err
+            });
+        }
+    });
 });
 
 router.get('/', function (req, res, next) {

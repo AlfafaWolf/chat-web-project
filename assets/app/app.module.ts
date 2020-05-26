@@ -16,6 +16,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { MessageService } from './messages/services/message.services';
+import { AuthService } from './auth/services/auth.services';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
     declarations: [
@@ -33,7 +36,8 @@ import { ProfileComponent } from './auth/profile/profile.component';
         TextSizeComponent,
     ],
     imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [MessageService, AuthService, AuthGuard]
 })
 export class AppModule {
 

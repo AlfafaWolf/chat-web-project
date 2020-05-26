@@ -6,10 +6,18 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['/mensagens']">Mensagens</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active">
+                <!--<li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['/autenticacao']">Autenticação</a>
-                </li>
+                </li>-->
             </ul>
+        </div>
+        <div class="navbar-text ml-auto" *ngIf="authService.isLogged()">
+            <a class="mx-2" [routerLink]="['/profile']">
+                <i class="material-icons">account_circle</i>
+            </a>
+            <a (click)="onLogout()">
+                <i class="material-icons">exit_to_app</i>
+            </a>
         </div>
     </nav>
 </header>

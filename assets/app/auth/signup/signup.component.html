@@ -1,30 +1,35 @@
-<h1>SIGN UP</h1>
-<div class="col-md-8 col-md-offset-2">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="firstName">Nome:</label>
-            <input type="text" id="firstName" class="form-control" placeholder="First Name" formControlName="firstNameTS">
-        </div>
-        <div class="form-group">
-            <label for="lastName">Sobrenome:</label>
-            <input type="text" id="lastName" class="form-control" placeholder="Last Name"formControlName="lastNameTS">
-        </div>
-        <div class="form-group">
-            <label for="gender">Gênero:</label>
-            <select name="gender" class="form-control" formControlName="genderTS">
-                <option value="other">Outro</option>
-                <option value="male">Masculino</option>
-                <option value="female">Feminino</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" class="form-control" placeholder="Email address" formControlName="emailTS">
-        </div>
-        <div class="form-group">
-            <label for="pass">Senha:</label>
-            <input type="password" id="pass" class="form-control" placeholder="Password" formControlName="passwordTS">
-        </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Cadastrar</button>
-    </form>
+<div class="row align-items-center justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5 py-8 py-md-11">
+        <h3 class="font-bold text-center">SIGN UP</h3>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="firstName">Nome:</label>
+                <input type="text" id="firstName" class="form-control form-control-lg" placeholder="First Name" formControlName="firstNameTS">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Sobrenome:</label>
+                <input type="text" id="lastName" class="form-control form-control-lg" placeholder="Last Name"formControlName="lastNameTS">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gênero:</label>
+                <select name="gender" class="form-control form-control-lg" formControlName="genderTS">
+                    <option value="other">Outro</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="form-control form-control-lg" placeholder="Email address" formControlName="emailTS">
+            </div>
+            <div class="form-group">
+                <label for="pass">Senha:</label>
+                <input type="password" id="pass" class="form-control form-control-lg" placeholder="Password" formControlName="passwordTS">
+            </div>
+            <button class="btn btn-lg btn-block btn-primary" type="submit" [disabled]="!myForm.valid">Cadastrar</button>
+        </form>
+        <p class="text-center mt-3">
+            Already have an account? <a [routerLink]="['/signin']">Sign in</a>.
+        </p>
+    </div>
 </div>

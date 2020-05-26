@@ -1,7 +1,6 @@
-<div class="container">
-    <app-header></app-header>
+<div class="container p-3">
+    <app-header *ngIf="authService.isLogged()"></app-header>
     <router-outlet></router-outlet>
-    <!--<app-messages></app-messages>-->
 </div>
 <!--<div>
     <size-app [cdTextSizeAlias] = "textSize"
