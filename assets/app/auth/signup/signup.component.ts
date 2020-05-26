@@ -1,7 +1,8 @@
 import { User } from "../../models/user.model"
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import {AuthService} from "../services/auth.services"
+import {AuthService} from "../services/auth.services";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-signup',
@@ -10,19 +11,20 @@ import {AuthService} from "../services/auth.services"
 })
 
 export class SignupComponent implements OnInit {
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private router: Router) { }
     myForm: FormGroup;
+
 
     onSubmit() {
         const { emailTS, passwordTS, genderTS, firstNameTS, lastNameTS } = this.myForm.value;
         const user = new User(emailTS, passwordTS, genderTS, firstNameTS, lastNameTS);
-        console.log(user);
+        //console.log(user);
         this.authService.addUser(user)
         .subscribe(
-            dadosSucesso => console.log(dadosSucesso),
+            dadosSucesso => this.router.navigate(['/mensagens']),
             dadosErro => console.log(dadosErro)
         );
-        console.log(this.myForm.value);
+        //console.log(this.myForm.value);
         this.myForm.reset();
     }
 
