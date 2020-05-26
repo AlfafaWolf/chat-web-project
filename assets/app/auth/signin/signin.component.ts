@@ -24,6 +24,7 @@ export class SigninComponent implements OnInit {
             dadosSucesso => 
             {
                 if(dadosSucesso){
+                    this.authService.userAutenticado = true;
                     this.router.navigate(['/mensagens'])
                 }
                 else{

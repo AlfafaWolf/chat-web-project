@@ -16,6 +16,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './auth/services/auth.services';
 
 @NgModule({
     declarations: [
@@ -32,6 +34,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
         ProfileComponent,
         TextSizeComponent,
     ],
+    providers: [AuthGuard, AuthService],
     imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule],
     bootstrap: [AppComponent]
 })

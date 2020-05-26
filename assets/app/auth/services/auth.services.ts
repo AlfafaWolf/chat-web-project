@@ -8,11 +8,12 @@ import { Observable } from "rxjs";
 @Injectable()
 export class AuthService {
     private user: User = null;
+    userAutenticado = false;
 
     constructor(private http: Http) { }
 
     isLogged(){
-        return this.user!= null;
+        return this.user != null;
     }
 
     addUser(user: User) {
@@ -40,6 +41,7 @@ export class AuthService {
                 const {_id, firstName, lastName, gender, password, email} = msg;
                 if(user.password === msg.password){
                     this.user = new User(email, password, gender, firstName, lastName, _id);
+                    this.userAutenticado = true;
                     console.log(this.user);
                     return true;
                 }
@@ -51,8 +53,14 @@ export class AuthService {
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
 
+    usuarioAutenticado(){
+        return this.userAutenticado;
+    }
+
     logOff(){
+        console.log(this.user.email);
         this.user = null;
+        console.log(this.user);
     }
 
 }
