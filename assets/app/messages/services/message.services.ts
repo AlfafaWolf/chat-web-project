@@ -16,10 +16,11 @@ export class MessageService {
         const myHeaders = new Headers({'Content-Type': 'application/json'});
         return this.http.post('http://localhost:3000/message', bodyReq, {headers: myHeaders})
             .map((responseRecebida: Response) => {
+                
                 const responseEmJSON = responseRecebida.json();
                 const msg = responseEmJSON.objMessageSave;
-                this.messageSService.push(new Message(msg.content, message.username, msg._id, message.userId));
-                console.log(this.messageSService + "this is it");
+                this.messageSService.push(new Message(msg.content, message.username, message.userId, msg._id));
+                console.log(this.messageSService);
             })
             .catch((errorRecebido: Response) => Observable.throw(errorRecebido.json()));
     }
@@ -33,7 +34,7 @@ export class MessageService {
                 let transfomedCastMessagesModelFrontend: Message[] = [];
                 for (const msg of messageSResponseRecebida) {
                     transfomedCastMessagesModelFrontend.push(
-                        new Message(msg.content, msg.username, msg._id, msg.userId));
+                        new Message(msg.content, msg.username,msg.userId, msg._id ));
                 }
                 this.messageSService = transfomedCastMessagesModelFrontend;
                 console.log(this.messageSService);
@@ -68,7 +69,7 @@ export class MessageService {
 
                 for (const msg of this.messageSService) {
                     if (msg.messageId === message.messageId) {
-                        this.messageSService[this.messageSService.indexOf(msg)] = new Message(msgAlterada.content, msgAlterada.username, msgAlterada._id, msgAlterada.userId);
+                        this.messageSService[this.messageSService.indexOf(msg)] = new Message(msgAlterada.content, msgAlterada.username, msgAlterada.userId, msgAlterada._id);
                         break;
                     }
                 }

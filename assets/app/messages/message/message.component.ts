@@ -27,7 +27,7 @@ export class MessageComponent {
     }
 
     submitEdit(value: string) {
-        const msg = new Message(value, this.messageVarClasse.username, this.messageVarClasse.messageId, this.messageVarClasse.userId);
+        const msg = new Message(value, this.messageVarClasse.username, this.messageVarClasse.userId, this.messageVarClasse.messageId);
         this.messageServiceObj.editMessage(msg)
             .subscribe(
                 dadosSucesso => {
