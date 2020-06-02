@@ -34,7 +34,7 @@ export class MessageService {
                 let transfomedCastMessagesModelFrontend: Message[] = [];
                 for (const msg of messageSResponseRecebida) {
                     transfomedCastMessagesModelFrontend.push(
-                        new Message(msg.content, msg.username,msg.userId, msg._id ));
+                        new Message(msg.content, msg.username,msg.userID, msg._id ));
                 }
                 this.messageSService = transfomedCastMessagesModelFrontend;
                 console.log(this.messageSService);

@@ -11,8 +11,8 @@ const MessageSchema = new Schema({
         ref: 'User'
     },
     username: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     }
 });
 

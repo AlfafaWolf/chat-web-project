@@ -19,6 +19,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { MessageService } from './messages/services/message.services';
 import { AuthService } from './auth/services/auth.services';
 import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './notfound/notfound.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { AuthGuard } from './guards/auth.guard';
         SigninComponent,
         LogoutComponent,
         ProfileComponent,
+        NotFoundComponent,
         TextSizeComponent,
     ],
     imports: [BrowserModule, FormsModule, myrouting, ReactiveFormsModule, HttpModule],

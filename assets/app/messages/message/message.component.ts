@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Message } from '../../models/message.model';
 import { MessageService } from '../services/message.services';
+import { AuthService } from '../../auth/services/auth.services';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class MessageComponent {
 
     estaEditando: boolean = false;
 
-    constructor(private messageServiceObj: MessageService) { }
+    constructor(private messageServiceObj: MessageService, private authService: AuthService) { }
 
     @Input() messageVarClasse : Message = new Message("","");
     //@Input('inputMessage') messageVarClasseAlias : Message = new Message("","");
@@ -51,6 +52,10 @@ export class MessageComponent {
                 dadosSucesso => console.log(dadosSucesso),
                 dadosErro => console.log(dadosErro)
             );
+    }
+
+    isMessageOwner() {
+        return this.messageVarClasse.userId === this.authService.getID();
     }
 }
 

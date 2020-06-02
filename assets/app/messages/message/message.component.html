@@ -10,39 +10,17 @@
         </div>
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer" [ngStyle]="{'background-color': isMessageOwner() ? '#dde8ff' : ''}">
         {{ messageVarClasse.username }}
-        <div class="config" *ngIf="!estaEditando">
-            <a (click)="onEdit()">Edit</a> |
-            <a (click)="onDelete()">Delete</a>
-        </div>
-        <div *ngIf="estaEditando">
-            <button type="button" class="btn btn-primary btn-sm" (click)="submitEdit(editBox.value)">Submit</button>
-            <button type="button" class="btn btn-danger btn-sm" (click)="cancelEdit()">Cancel</button>
+        <div *ngIf="isMessageOwner()">
+            <div class="config" *ngIf="!estaEditando">
+                <a (click)="onEdit()">Edit</a> |
+                <a (click)="onDelete()">Delete</a>
+            </div>
+            <div *ngIf="estaEditando">
+                <button type="button" class="btn btn-primary btn-sm" (click)="submitEdit(editBox.value)">Submit</button>
+                <button type="button" class="btn btn-danger btn-sm" (click)="cancelEdit()">Cancel</button>
+            </div>
         </div>
     </div>
 </div>
-<!--
-<article class="panel panel-default" [ngStyle]="{backgroundColor: color, 'font-size.px': tam}"
-                                        (click)="color = 'yellow'"
-                                        (dblclick)="onMudaStyle()"
-                                        (mouseenter)="color = 'green'"
-                                        (mouseleave)="color = 'blue'">
-    <div class="panel-body">
-        {{ messageVarClasse.content }}
-        {{ messageVarClasseAlias.content }}
-        //{{ message.content }}
-    </div>
-    <footer class="panel-footer">
-        <div class="author">
-            {{ messageVarClasse.username }}
-            {{ messageVarClasseAlias.username }}
-           //{{ message.author }}
-        </div>
-        <div class="config">
-            <a href="#" (click)="onEdit()">Edit</a>
-            <a href="#">Delete</a>
-        </div>
-    </footer>
-</article>
--->
